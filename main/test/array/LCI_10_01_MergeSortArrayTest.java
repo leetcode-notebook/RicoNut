@@ -31,14 +31,14 @@ public class LCI_10_01_MergeSortArrayTest {
 
     }
 
-//    @Test
-//    public void mergeSortArrayTest_case_2_double_point() {
-//        LCI_10_01_MergeSortArray mergeSortArray = new LCI_10_01_MergeSortArray();
-//        int[] a = new int[]{4, 5, 6, 0, 0, 0};
-//        int[] b = new int[]{1, 2, 3};
-//        int[] excepted = new int[]{1, 2, 3, 4, 5, 6};
-//        mergeSortArray.mergeDoublePoint(a, 3, b, 3);
-//        assertThat(a, is(excepted));
-//
-//    }
+    @Test
+    public void mergeSortArrayTest_case_2_double_point() {
+        LCI_10_01_MergeSortArray mergeSortArray = new LCI_10_01_MergeSortArray();
+        int[] a = new int[]{4, 5, 6, 0, 0, 0};
+        int[] b = new int[]{1, 2, 3};
+        int[] excepted = new int[]{1, 2, 3, 4, 5, 6};
+        mergeSortArray.mergeDoublePoint(a, 3, b, 3);
+        assertThat(a, is(excepted));
+
+    }
 }
