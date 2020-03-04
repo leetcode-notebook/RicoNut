@@ -86,4 +86,38 @@ public class LC_102_BinaryTreeLevelOrderTest {
         assertThat(result, is(except));
 
     }
+
+    @Test
+    public void testLevelOrderBFS_2() {
+        TreeNode root3 = new TreeNode(3);
+        TreeNode right20 = new TreeNode(20);
+        right20.left = new TreeNode(15);
+        right20.right = new TreeNode(7);
+        root3.left = new TreeNode(9);
+        root3.right = right20;
+        List<List<Integer>> result = binaryTreeLevelOrder.levelOrderBFS_2(root3);
+        List<List<Integer>> except = new ArrayList<>();
+        except.add(Collections.singletonList(3));
+        except.add(Arrays.asList(9, 20));
+        except.add(Arrays.asList(15, 7));
+        assertThat(result, is(except));
+
+    }
+
+    @Test
+    public void testLevelOrder_recur_2() {
+        TreeNode root3 = new TreeNode(3);
+        TreeNode right20 = new TreeNode(20);
+        right20.left = new TreeNode(15);
+        right20.right = new TreeNode(7);
+        root3.left = new TreeNode(9);
+        root3.right = right20;
+        List<List<Integer>> result = binaryTreeLevelOrder.levelOrder_recur_2(root3);
+        List<List<Integer>> except = new ArrayList<>();
+        except.add(Collections.singletonList(3));
+        except.add(Arrays.asList(9, 20));
+        except.add(Arrays.asList(15, 7));
+        assertThat(result, is(except));
+
+    }
 }

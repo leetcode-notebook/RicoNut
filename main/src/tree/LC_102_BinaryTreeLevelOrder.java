@@ -99,4 +99,54 @@ public class LC_102_BinaryTreeLevelOrder {
 
     }
 
+    /**
+     * BFS思路：用queue解决，每一层的节点，输出当前节点的时候，都去判断是否有子节点，按并将子节点顺序入队
+     */
+    public List<List<Integer>> levelOrderBFS_2(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (null == root) {
+            return result;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            // 由于需要将每一层的节点入队，需要判断队列中那些数据是属于本层的，
+            // 通过开始遍历本层之前，记录这一层节点数量，每出队一个节点，计数器减少1，直至减少为0
+            int currentQueueSize = queue.size();
+            List<Integer> curList = new ArrayList<>();
+            while (currentQueueSize-- > 0) {
+                TreeNode cur = queue.poll();
+                curList.add(cur.val);
+                if (cur.left != null)
+                    queue.add(cur.left);
+                if (cur.right != null)
+                    queue.add(cur.right);
+            }
+            result.add(curList);
+        }
+        return result;
+    }
+
+    /**
+     * 递归
+     */
+    public List<List<Integer>> levelOrder_recur_2(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        _recur_help(root, 0, result);
+        return result;
+    }
+
+    private void _recur_help(TreeNode root, int level, List<List<Integer>> result) {
+        // 初始化数组：根据层级编号，如果数组在本层尚未进行初始化，需要初始化本层的数组
+        if (level == result.size()) {
+            result.add(new ArrayList<>());
+        }
+        result.get(level).add(root.val);
+        if (root.left != null) {
+            _recur_help(root.left, level + 1, result);
+        }
+        if (root.right != null) {
+            _recur_help(root.right, level + 1, result);
+        }
+    }
 }
