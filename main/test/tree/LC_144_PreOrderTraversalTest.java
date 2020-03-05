@@ -30,6 +30,18 @@ public class LC_144_PreOrderTraversalTest {
     }
 
     @Test
+    public void test_preOrderTraversal_recur() {
+        TreeNode root = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        node2.left = node3;
+        root.right = node2;
+        List<Integer> expected = Arrays.asList(1, 2, 3);
+        List<Integer> res = preOrderTraversal.preOrderTraversalRecur_cur(root);
+        assertThat(res, is(expected));
+    }
+
+    @Test
     public void preOrderTraversalStackTest() {
         TreeNode root = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);
@@ -38,6 +50,18 @@ public class LC_144_PreOrderTraversalTest {
         root.right = node2;
         List<Integer> expected = Arrays.asList(1, 2, 3);
         List<Integer> res = preOrderTraversal.preOrderTraversalStack(root);
+        assertThat(res, is(expected));
+    }
+
+    @Test
+    public void test_preOrderTraversalStack_loop() {
+        TreeNode root = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        node2.left = node3;
+        root.right = node2;
+        List<Integer> expected = Arrays.asList(1, 2, 3);
+        List<Integer> res = preOrderTraversal.preOrderTraversalStack_loop(root);
         assertThat(res, is(expected));
     }
 

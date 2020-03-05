@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -54,5 +55,48 @@ public class LC_144_PreOrderTraversal {
             }
         }
         return nums;
+    }
+
+    /**
+     * 递归解法: 前序遍历： 根 左 右
+     */
+    public List<Integer> preOrderTraversalRecur_cur(TreeNode root) {
+        // terminated
+        if (null == root) return Collections.emptyList();
+        // current process
+        List<Integer> result = new ArrayList<>();
+        result.add(root.val);
+        if (null != root.left) {
+            result.addAll(preOrderTraversalRecur_cur(root.left));
+        }
+        if (null != root.right) {
+            result.addAll(preOrderTraversalRecur_cur(root.right));
+        }
+        return result;
+    }
+
+    /**
+     * 栈迭代法： 用栈结构的先进后出维护根节点需要后进先出的特性
+     */
+    public List<Integer> preOrderTraversalStack_loop(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.add(root);
+        while (!stack.isEmpty()) {
+            TreeNode cur = stack.pop();
+            result.add(cur.val);
+            if (cur.right != null) {
+                stack.add(cur.right);
+            }
+            if (cur.left != null) {
+                stack.add(cur.left);
+            }
+        }
+
+
+        return result;
     }
 }
