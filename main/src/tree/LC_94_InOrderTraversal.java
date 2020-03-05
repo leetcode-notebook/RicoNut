@@ -125,4 +125,46 @@ public class LC_94_InOrderTraversal {
         }
         return list;
     }
+
+    /**
+     * 迭代法： 栈
+     */
+    public List<Integer> inOrderTraversal_loop_3rd(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (null == root) return result;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.add(root);
+        while (!stack.isEmpty()) {
+            TreeNode cur = stack.peek();
+            // 所有左节点入栈，后进先出
+            while (cur.left != null) {
+                stack.add(cur.left);
+                cur = cur.left;
+            }
+
+            // 出栈
+            while (!stack.isEmpty()) {
+                TreeNode pop = stack.pop();
+                result.add(pop.val);
+                if (pop.right != null) {
+                    stack.add(pop.right);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    public List<Integer> inOrderTraversalReverse_recur_3rd(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (null == root) return result;
+        if (null != root.left) {
+            result.addAll(inOrderTraversalReverse_recur_3rd(root.left));
+        }
+        result.add(root.val);
+        if (null != root.right) {
+            result.addAll(inOrderTraversalReverse_recur_3rd(root.right));
+        }
+        return result;
+    }
 }
