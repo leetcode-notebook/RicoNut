@@ -26,6 +26,17 @@ public class LC_104BinaryTreeMaxDepthTest {
     }
 
     @Test
+    public void test_maxDepthQueue_recur() {
+        TreeNode root = new TreeNode(3);
+        TreeNode right20 = new TreeNode(20);
+        root.left = new TreeNode(9);
+        right20.left = new TreeNode(15);
+        right20.right = new TreeNode(7);
+        root.right = right20;
+        assertThat(binaryTreeMaxDepth.maxDepthQueue_recur(root), is(3));
+    }
+
+    @Test
     public void maxDepthTreeDFS() {
         TreeNode root = new TreeNode(3);
         TreeNode right20 = new TreeNode(20);

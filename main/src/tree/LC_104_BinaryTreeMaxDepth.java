@@ -42,4 +42,21 @@ public class LC_104_BinaryTreeMaxDepth {
         // 递归 + 1
         return Math.max(left_depth, right_depth) + 1;
     }
+
+    public int maxDepthQueue_recur(TreeNode root) {
+        // terminated
+        if (null == root) return 0;
+        // current process
+        int left = 0;
+        int right = 0;
+        // drill down
+        if (root.left != null) {
+            left = maxDepthQueue_recur(root.left);
+        }
+        if (root.right != null) {
+            right = maxDepthQueue_recur(root.right);
+        }
+        // reset
+        return Math.max(left, right) + 1;
+    }
 }
