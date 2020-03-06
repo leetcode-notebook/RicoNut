@@ -149,4 +149,34 @@ public class LC_102_BinaryTreeLevelOrder {
             _recur_help(root.right, level + 1, result);
         }
     }
+
+    /**
+     * 11:50 AM	info
+     * Success:
+     * Runtime:1 ms, faster than 96.95% of Java online submissions.
+     * Memory Usage:38.5 MB, less than 5.27% of Java online submissions.
+     * 二叉树的层次遍历：BFS，用队列实现，出队的时候，要用一个计数器记录当前层需要出队的数量
+     */
+    public List<List<Integer>> levelOrderBFS_3rd(TreeNode root) {
+        if (null == root) return null;
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> curRes = new ArrayList<>();
+            while (size-- > 0) {
+                TreeNode poll = queue.poll();
+                curRes.add(poll.val);
+                if (poll.left != null) {
+                    queue.add(poll.left);
+                }
+                if (poll.right != null) {
+                    queue.add(poll.right);
+                }
+            }
+            result.add(curRes);
+        }
+        return result;
+    }
 }
