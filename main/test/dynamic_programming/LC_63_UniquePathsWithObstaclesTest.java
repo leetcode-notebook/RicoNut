@@ -51,4 +51,21 @@ public class LC_63_UniquePathsWithObstaclesTest {
                 {{0, 0}, {1, 1}, {0, 0}}
         ), is(0));
     }
+
+    @Test
+    public void testUniquePathsWithObstaclesDP_3RD() {
+        assertThat(uniquePathsWithObstaclesDomain.uniquePathsWithObstaclesDP_3rd(new int[][]{
+                {0, 0, 0},
+                {0, 1, 0},
+                {0, 0, 0}
+        }), is(2));
+
+        assertThat(uniquePathsWithObstaclesDomain.uniquePathsWithObstaclesDP_3rd(new int[][]{
+                {1, 0}
+        }), is(0));
+
+        assertThat(uniquePathsWithObstaclesDomain.uniquePathsWithObstaclesDP_3rd(new int[][]
+                {{0, 0}, {1, 1}, {0, 0}}
+        ), is(0));
+    }
 }
