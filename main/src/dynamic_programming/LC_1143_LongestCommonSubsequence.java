@@ -85,4 +85,32 @@ public class LC_1143_LongestCommonSubsequence {
         }
         return dp[t1.length][t2.length];
     }
+
+    /**
+     * 思路：
+     * 1. 最优子结构: opt[n] = best_if(opt[n-1], opt[n-2],...)
+     * 2. 储存中间状态：opt[i]
+     * 3. 递推公式(状态转移方程)
+     * Fib: opt[i] = opt[n-1] + opt[n-2]
+     * 二维路径: opt[i][j] = fun(opt[i-1][j], opt[i][j-1])
+     * 本题：
+     * 需要将两个字符串转化为两个二维数组，
+     * 用dp[][] 存储中间状态
+     * dp方程：t1[i] == t2[j] ? opt[i][j] = opt[i-1][j-1] + 1 : opt[i][j] = opt[i-1][j] + opt[i][j-1]
+     */
+    public int longestCommonSubsequence4(String text1, String text2) {
+        char[] t1 = text1.toCharArray();
+        char[] t2 = text2.toCharArray();
+        int[][] dp = new int[t1.length + 1][t2.length + 1];
+        for (int i = 1; i <= t1.length; i++) {
+            for (int j = 1; j <= t2.length; j++) {
+                if (t1[i - 1] == t2[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[t1.length][t2.length];
+    }
 }
