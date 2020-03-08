@@ -27,4 +27,34 @@ LC_198_HouseRobber {
         }
         return Math.max(dp[nums.length - 1][1], dp[nums.length - 1][0]);
     }
+
+    /**
+     * 只用以为数据记录每栋房子必偷时的金币数量(必偷，但是不拿金币)，取dp数组中的最大值，就是所得的金币
+     * 5:17 PM	info
+     * Success:
+     * Runtime:0 ms, faster than 100.00% of Java online submissions.
+     * Memory Usage:36.6 MB, less than 5.02% of Java online submissions.
+     */
+    public int rob_pretty(int[] nums) {
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+        int max = Math.max(dp[0], dp[1]);
+        for (int i = 2; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i - 1] + 0, dp[i - 2] + nums[i]);
+            max = Math.max(max, dp[i]);
+        }
+        return max;
+    }
+
+    public int rob_pretty_1_array(int[] nums) {
+        int prevMax = 0;
+        int currMax = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int temp = currMax;
+            currMax = Math.max(prevMax + nums[i], currMax);
+            prevMax = temp;
+        }
+        return currMax;
+    }
 }

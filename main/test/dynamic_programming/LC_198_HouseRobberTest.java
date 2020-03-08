@@ -15,4 +15,16 @@ public class LC_198_HouseRobberTest {
         LC_198_HouseRobber houseRobber = new LC_198_HouseRobber();
         assertThat(houseRobber.rob(new int[]{1, 2, 3, 1}), is(4));
     }
+
+    @Test
+    public void house_robby_pretty_test() {
+        LC_198_HouseRobber houseRobber = new LC_198_HouseRobber();
+        assertThat(houseRobber.rob_pretty(new int[]{1, 2, 3, 1}), is(4));
+    }
+
+    @Test
+    public void house_robby_pretty_1_array_test() {
+        LC_198_HouseRobber houseRobber = new LC_198_HouseRobber();
+        assertThat(houseRobber.rob_pretty_1_array(new int[]{1, 2, 3, 1}), is(4));
+    }
 }
