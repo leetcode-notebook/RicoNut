@@ -11,8 +11,14 @@ import static org.junit.Assert.assertThat;
  */
 public class LC_121_BestTimeToBuyOrSellStockTest {
     @Test
-    public void best_time_to_buy_sell_stock_test() {
+    public void best_time_to_buy_sell_stock_resolve_2D_test() {
         LC_121_BestTimeToBuyOrSellStock bt = new LC_121_BestTimeToBuyOrSellStock();
-        assertThat(bt.maxProfit(new int[]{7, 1, 5, 3, 6, 4}), is(5));
+        assertThat(bt.maxProfit_2d(new int[]{7, 1, 5, 3, 6, 4}), is(5));
+    }
+
+    @Test
+    public void best_time_to_buy_sell_stock_resolve_1D_test() {
+        LC_121_BestTimeToBuyOrSellStock bt = new LC_121_BestTimeToBuyOrSellStock();
+        assertThat(bt.maxProfit_1d(new int[]{7, 1, 5, 3, 6, 4}), is(5));
     }
 }
