@@ -2,7 +2,8 @@ package bit;
 
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
+
 
 /**
  * @author alis
@@ -14,8 +15,8 @@ public class LC_231_IsPowerOfTwoTest {
 
     @Test
     public void TestIsPowerOfTwo() {
-        assertThat(ipt.isPowerOfTwo(1));
-        assertThat(ipt.isPowerOfTwo(16));
-        assertThat(!ipt.isPowerOfTwo(218));
+        assertTrue(ipt.isPowerOfTwo(1));
+        assertTrue(ipt.isPowerOfTwo(16));
+        assertTrue(!ipt.isPowerOfTwo(218));
     }
 }
