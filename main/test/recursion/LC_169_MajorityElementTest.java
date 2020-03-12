@@ -46,4 +46,10 @@ public class LC_169_MajorityElementTest {
         assertThat(majorityElement.majorityElementDivide2(new int[]{1,8, 8, 7, 7, 7}), is(7));
         assertThat(majorityElement.majorityElementDivide2(new int[]{2, 2, 1, 1, 1, 2, 2}), is(2));
     }
+
+    @Test
+    public void majorityElementDivide3rdTest() {
+        assertThat(majorityElement.majorityElementDivide_3rd(new int[]{1, 8, 8, 7, 7, 7}), is(7));
+        assertThat(majorityElement.majorityElementDivide_3rd(new int[]{2, 2, 1, 1, 1, 2, 2}), is(2));
+    }
 }
